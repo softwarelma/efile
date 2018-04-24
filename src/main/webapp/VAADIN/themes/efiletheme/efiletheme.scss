@@ -7,6 +7,16 @@
 //$v-font-weight: 300;
 //$v-font-family: "Open Sans", sans-serif;
 
+.v-label {
+    font-size: 30px;
+    line-height: normal;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+$v-background-color: #1a61b7;
+$v-font-color : #ffffff;
+
 // Defines the border used by all components.
 //$v-border: 1px solid (v-shade 0.7);
 //$v-border-radius: 4px;
