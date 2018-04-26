@@ -9,7 +9,6 @@ import java.util.Map;
 import com.softwarelma.epe.p1.app.EpeAppException;
 import com.softwarelma.epe.p1.app.EpeAppUtils;
 import com.softwarelma.epe.p3.disk.EpeDiskFinalList_files_recursive;
-import com.sun.prism.Image;
 import com.vaadin.data.TreeData;
 import com.vaadin.data.provider.InMemoryDataProvider;
 import com.vaadin.data.provider.TreeDataProvider;
@@ -18,6 +17,8 @@ import com.vaadin.server.FileDownloader;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Tree;
 import com.vaadin.ui.Tree.ItemClick;
 import com.vaadin.ui.Tree.ItemClickListener;
@@ -55,6 +56,7 @@ public class EfileServer implements Serializable {
 		this.newDownloadButton();
 		layout.addComponent(title);
 		layout.addComponents(tree, this.buttonDownload);
+		layout.addComponent(this.retrieveLinkButton(ui));
 		ui.setContent(layout);
 
 	}
@@ -85,6 +87,24 @@ public class EfileServer implements Serializable {
 			}
 
 		});
+	}
+
+	private Button retrieveLinkButton(UI ui) {
+		String url = "http://www.arcgis.com/home/webmap/viewer.html?url=http%3A%2F%2F193.204.79.70%3A6080%2Farcgis%2Frest%2Fservices%2FMEDCIS%2FMEDCIS%2FMapServer&source=sd";
+		Button linkButton = new Button("GIS Map");
+		linkButton.setDescription("The GIS service is one of the main result of the MEDCIS project");
+
+		linkButton.addClickListener(new ClickListener() {
+
+			private static final long serialVersionUID = -2983635370703703132L;
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				//ui.getPage().open(url, "_blank");it opens a pop-up, if they are blocked by browser it doesn't work
+				ui.getPage().setLocation(url);
+			}
+		});
+		return linkButton;
 	}
 
 	private void addItems(TreeData<EfileTreeData> treeData) throws EpeAppException {

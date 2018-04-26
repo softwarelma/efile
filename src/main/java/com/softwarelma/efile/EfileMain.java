@@ -32,4 +32,9 @@ public class EfileMain extends UI {
         private static final long serialVersionUID = 1L;
     }
 
+    /*@WebServlet(urlPatterns = "/efile/map", name = "EfileMainServletMap", asyncSupported = true)
+    @VaadinServletConfiguration(ui = EfileMain.class, productionMode = false)
+    public static class EfileMainServletMap extends VaadinServlet {
+        private static final long serialVersionUID = 1L;
+    }*/
 }
